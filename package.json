@@ -1,13 +1,38 @@
 {
   "name": "big-o-for-vscode",
-  "displayName": "big-o-for-vscode",
+  "displayName": "big O for VSCode",
   "description": "A VSCode extension that analyzes functions in JavaScript/TypeScript files and inserts a comment above each one estimating its time complexity in Big O notation.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.99.0"
   },
+  "publisher": "caldeirao",
+  "author": {
+    "name": "Luiz Caldeirão",
+    "email": "claudiocaldeirao@gmail.com"
+  },
   "categories": [
     "Other"
+  ],
+  "repository": {
+    "url": "https://github.com/claudiocaldeirao/big-o-for-vscode"
+  },
+  "keywords": [
+    "complexity",
+    "big o",
+    "big o notation",
+    "time complexity",
+    "code analysis",
+    "function analysis",
+    "performance",
+    "vscode extension",
+    "javascript",
+    "typescript",
+    "static analysis",
+    "developer tools",
+    "code metrics",
+    "code quality",
+    "complexity analyzer"
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
