@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "big-o-for-vscode.helloWorld",
-        "title": "Hello World"
+        "command": "big-o-for-vscode.analyzeComplexity",
+        "title": "Analyze Code Complexity"
       }
     ]
   },
