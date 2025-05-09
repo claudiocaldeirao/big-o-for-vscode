@@ -40,6 +40,10 @@ function sum(arr) {
 }
 ```
 
+### 📎 Sample
+
+![image](images/sample.png)
+
 ### 🚀 Usage
 
 - Open a JavaScript or TypeScript file.
