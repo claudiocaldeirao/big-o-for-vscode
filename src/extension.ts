@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import { computeCodeComplexity } from "./javascript/index";
 import path from "path";
+import { ComplexityCodeLensProvider } from "./javascript";
 
 export function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand(
@@ -23,7 +23,15 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
 
-      computeCodeComplexity(document);
+      context.subscriptions.push(
+        vscode.languages.registerCodeLensProvider(
+          [
+            { scheme: "file", language: "javascript" },
+            { scheme: "file", language: "typescript" },
+          ],
+          new ComplexityCodeLensProvider()
+        )
+      );
     }
   );
 

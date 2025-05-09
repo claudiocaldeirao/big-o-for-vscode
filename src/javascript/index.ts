@@ -5,28 +5,36 @@ const ARROW_FUNCTION_REGEX = /const\s+\w+\s*=\s*\(.*\)\s*=>\s*{/;
 const CLASS_METHOD_REGEX = /^\s*\w+\s*\(.*\)\s*{/;
 const LOOP_REGEX = /\b(for|while|forEach|map|filter|reduce)\b/;
 
-export function computeCodeComplexity(document: vscode.TextDocument) {
-  const edit = new vscode.WorkspaceEdit();
-  const text = document.getText();
-  const lines = text.split("\n");
+export class ComplexityCodeLensProvider implements vscode.CodeLensProvider {
+  provideCodeLenses(document: vscode.TextDocument): vscode.CodeLens[] {
+    const lenses: vscode.CodeLens[] = [];
+    const lines = document.getText().split("\n");
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      if (
+        FUNCTION_DECLARATION_REGEX.test(line) ||
+        ARROW_FUNCTION_REGEX.test(line) ||
+        CLASS_METHOD_REGEX.test(line)
+      ) {
+        const body = collectFunctionBody(lines, i);
+        const complexity = estimateComplexity(body);
 
-    if (
-      FUNCTION_DECLARATION_REGEX.test(line) ||
-      ARROW_FUNCTION_REGEX.test(line) ||
-      CLASS_METHOD_REGEX.test(line)
-    ) {
-      const body = collectFunctionBody(lines, i);
-      const complexity = estimateComplexity(body);
-      const position = new vscode.Position(i, 0);
-      edit.insert(document.uri, position, `// Complexity: ${complexity}\n`);
-      i += body.length;
+        const position = new vscode.Position(i, 0);
+        const range = new vscode.Range(position, position);
+        const lens = new vscode.CodeLens(range, {
+          title: `Complexity: ${complexity}`,
+          command: "",
+          arguments: [],
+        });
+
+        lenses.push(lens);
+        i += body.length;
+      }
     }
-  }
 
-  vscode.workspace.applyEdit(edit);
+    return lenses;
+  }
 }
 
 function collectFunctionBody(lines: string[], startIndex: number): string[] {
