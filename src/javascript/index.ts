@@ -7,9 +7,9 @@ const ARROW_FUNCTION_REGEX =
 const CLASS_METHOD_REGEX = /^\s*\w+\s*\([^)]*\)\s*(?::\s*\w+)?\s*{/;
 const LOOP_REGEX = /\b(for|while|forEach|map|filter|reduce)\b/;
 const FUNCTION_NAME_REGEXES = [
-  /function\s+(\w+)\s*\(/,
-  /const\s+(\w+)\s*=\s*\(.*\)\s*=>/,
-  /^\s*(\w+)\s*\(.*\)\s*{/,
+  /function\s+(\w+)\s*\([^)]*\)\s*(?::\s*[\w<>\[\]]+)?\s*{/,
+  /const\s+(\w+)\s*=\s*\([^)]*\)\s*(?::\s*[\w<>\[\]]+)?\s*=>\s*{/,
+  /^\s*(\w+)\s*\([^)]*\)\s*(?::\s*[\w<>\[\]]+)?\s*{/,
 ];
 
 export class ComplexityCodeLensProvider implements vscode.CodeLensProvider {
