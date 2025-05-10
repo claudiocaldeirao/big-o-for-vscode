@@ -1,8 +1,10 @@
 import * as vscode from "vscode";
 
-const FUNCTION_DECLARATION_REGEX = /function\s+\w+\s*\(.*\)\s*{/;
-const ARROW_FUNCTION_REGEX = /const\s+\w+\s*=\s*\(.*\)\s*=>\s*{/;
-const CLASS_METHOD_REGEX = /^\s*\w+\s*\(.*\)\s*{/;
+const FUNCTION_DECLARATION_REGEX =
+  /function\s+\w+\s*\([^)]*\)\s*(?::\s*\w+)?\s*{/;
+const ARROW_FUNCTION_REGEX =
+  /const\s+\w+\s*=\s*\([^)]*\)\s*(?::\s*\w+)?\s*=>\s*{/;
+const CLASS_METHOD_REGEX = /^\s*\w+\s*\([^)]*\)\s*(?::\s*\w+)?\s*{/;
 const LOOP_REGEX = /\b(for|while|forEach|map|filter|reduce)\b/;
 const FUNCTION_NAME_REGEXES = [
   /function\s+(\w+)\s*\(/,
