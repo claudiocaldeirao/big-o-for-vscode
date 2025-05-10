@@ -2,7 +2,7 @@
   "name": "big-o-for-vscode",
   "displayName": "big O for VSCode",
   "description": "A VSCode extension that analyzes functions in JavaScript/TypeScript files and inserts a comment above each one estimating its time complexity in Big O notation.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.99.0"
   },
