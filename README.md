@@ -9,7 +9,8 @@
   - `O(1)` – No loops detected
   - `O(n)` – One loop or loop-like expression
   - `O(n^2)` – Nested or multiple loops detected
-- Inserts a comment like `// Complexity: O(n)` above the function.
+  - `O(2^n)` – Recursive functions detected
+- Inserts a vs code lens like `// Complexity: O(n)` above the function.
 
 > ⚠️ Note: This extension uses a simple static analysis technique and does **not** perform full control-flow or data-flow analysis. Use results as rough estimates only.
 
@@ -75,7 +76,7 @@ Planned enhancements for future versions include:
     - ✅ O(n) (Linear time)
     - 🟡 O(n log n)
     - ✅ O(n^2) (Quadratic time)
-    - 🟡 O(2^n) (Exponential time)
+    - ✅ O(2^n) (Exponential time)
 
   - Configurable detection rules via settings.
 
